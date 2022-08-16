@@ -8,7 +8,7 @@ const Header = () => {
             </div>
             <div className="flex gap-3 items-center">
                 <p>Github</p>
-                <div className="text-white bg-black p-1 rounded-md flex items-center justify-center">
+                <div className="text-white bg-black p-1 pl-2 pr-2 rounded-md flex items-center justify-center">
                     <p>Get Started</p>
                 </div>
             </div>
