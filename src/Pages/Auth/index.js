@@ -1,4 +1,5 @@
 import Poppins from "../../fonts/poppins"
+import "../../index.css"
 
 const GoogleAuth = () => {
 
@@ -7,7 +8,7 @@ const GoogleAuth = () => {
       <div className=" w-[100%] sm:w-[50%] flex items-center justify-center  p-6 sm:p-0">
         <div>
           <p className="text-2xl mb-3" style={Poppins}>
-            Welcome back to Findev
+            Welcome back to <span className="logo">fIndev</span>
           </p>
           <p style={Poppins} className="text-slate-600 text-sm mt-2">
            Try to login with your Google account
@@ -19,7 +20,7 @@ const GoogleAuth = () => {
         </div>
       </div>
       <div className="bg-[#F3F5F9] w-[100%] sm:w-[50%] h-max p-10 sm:h-full sm:p-0 flex items-center justify-center">
-        <p>FINDEV</p>
+      <p className="logo text-3xl">fIndev</p>
       </div>
     </div>
   );
