@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Poppins from "../../fonts/poppins";
 import instance from "../../utils/axios";
 
@@ -6,49 +7,52 @@ const DeveloperCard = ({ data }) => {
   const [userData, setUserData] = useState([]);
   const [location, setLocation] = useState({});
   const [skills, setSkills] = useState([]);
+  const {id} = useParams()
 
   useEffect(() => {
+
+    const GetSkills = () => {
+      instance
+        .post("/get-skills", {
+          id: data,
+        })
+        .then((res) => {
+          if (res.data.status) {
+            setSkills(res.data.result);
+          }
+        });
+    };
+  
+    const GetLocation = () => {
+      instance
+        .post("/get-location", {
+          id: data,
+        })
+        .then((res) => {
+          if (res.data.status) {
+            setLocation(res.data.result);
+          }
+        });
+    };
+  
+    const GetUser = () => {
+      instance
+        .post("/get-user", {
+          id: data,
+        })
+        .then((res) => {
+          setUserData(res.data.result);
+        });
+    };
     GetUser();
     GetLocation();
     GetSkills();
-  });
-
-  const GetSkills = () => {
-    instance
-      .post("/get-skills", {
-        id: data,
-      })
-      .then((res) => {
-        if (res.data.status) {
-          setSkills(res.data.result);
-        }
-      });
-  };
-
-  const GetLocation = () => {
-    instance
-      .post("/get-location", {
-        id: data,
-      })
-      .then((res) => {
-        if (res.data.status) {
-          setLocation(res.data.result);
-        }
-      });
-  };
-
-  const GetUser = () => {
-    instance
-      .post("/get-user", {
-        id: data,
-      })
-      .then((res) => {
-        setUserData(res.data.result);
-      });
-  };
+  },[]);
+  
 
   return (
-    <div
+    <a href={"/home/"+id+"/"+data+"/Devprofile"}>
+      <div
       className="w-56 h-full flex flex-col justify-between items-center bg-white rounded"
       style={Poppins}
     >
@@ -56,13 +60,13 @@ const DeveloperCard = ({ data }) => {
         <div className="w-16 h-16 bg-slate-500 rounded-full">
           <img
             src={userData.imageUrl}
-            alt="user"
+            alt={userData.username}
             className="h-full w-full rounded-full"
           />
         </div>
         <div className="flex flex-col items-center">
           <p>{userData.username}</p>
-          <p className="text-xs">#18524</p>
+          <p className="text-xs">#{userData.uid}</p>
         </div>
         <div className="w-full flex gap-3 flex-wrap justify-start mt-5">
           {skills.map((item, index) => {
@@ -81,6 +85,7 @@ const DeveloperCard = ({ data }) => {
         <p title={location.label}>{location.value}</p>
       </div>
     </div>
+    </a>
   );
 };
 

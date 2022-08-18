@@ -1,27 +1,20 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Poppins from "../../fonts/poppins";
-import Logout from "../../widgets/logout";
-import Header from "./header";
-import history from "../../utils/history";
 import instance from "../../utils/axios";
+import Header from "./header";
 
-const Profile = () => {
-  const { id } = useParams();
+const DeveloperProfile = () => {
+  const { uid } = useParams();
   const [userData, setUserData] = useState({});
   const [location, setLocation] = useState({});
   const [skills, setSkills] = useState([]);
-  
-  const response = () => {
-    history.push("/");
-    history.go();
-  };
 
   useEffect(() => {
     const GetSkills = () => {
       instance
         .post("/get-skills", {
-          id: id,
+          id: uid,
         })
         .then((res) => {
           if (res.data.status) {
@@ -29,11 +22,11 @@ const Profile = () => {
           }
         });
     };
-  
+
     const GetLocation = () => {
       instance
         .post("/get-location", {
-          id: id,
+          id: uid,
         })
         .then((res) => {
           if (res.data.status) {
@@ -41,11 +34,11 @@ const Profile = () => {
           }
         });
     };
-  
+
     const GetInfo = () => {
       instance
         .post("/get-user", {
-          id: id,
+          id: uid,
         })
         .then((res) => {
           if (res.data.status) {
@@ -56,12 +49,11 @@ const Profile = () => {
     GetInfo();
     GetLocation();
     GetSkills();
-  },[]);
-
+  }, [uid]);
 
   return (
     <div className="bg-[#181B23] min-h-[100vh]">
-      <Header />
+      <Header/>
       <div
         className="w-full flex flex-col gap-3 items-center justify-center"
         style={Poppins}
@@ -107,13 +99,9 @@ const Profile = () => {
             })}
           </div>
         </div>
-
-        <div className="w-72 sm:w-96 flex items-center justify-between">
-          <Logout response={response} />
-        </div>
       </div>
     </div>
   );
 };
 
-export default Profile;
+export default DeveloperProfile;

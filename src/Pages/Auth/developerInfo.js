@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { default as ReactSelect } from "react-select";
 import { components } from "react-select";
@@ -30,6 +30,7 @@ const DeveloperInfo = () => {
   const [usernameerror, setUsernameerror] = useState("");
   const [countryerror, setCountryerror] = useState("");
   const [skillerror, setSkillerror] = useState("");
+  const [loading,setLoading] = useState(false)
 
   const { id } = useParams();
 
@@ -38,6 +39,7 @@ const DeveloperInfo = () => {
   };
 
   const CreateuserProfile = () => {
+    setLoading(true)
     if (username === "") {
       setUsernameerror("Username is required");
     } else {
@@ -61,6 +63,7 @@ const DeveloperInfo = () => {
         username,
       })
       .then((res) => {
+        setLoading(false)
         if (res.data.status) {
           history.push("/home/" + id);
           history.go();
@@ -69,6 +72,8 @@ const DeveloperInfo = () => {
         }
       });
   };
+
+  
 
   return (
     <div className="bg-[#181B23] min-h-[100vh]">
@@ -117,6 +122,7 @@ const DeveloperInfo = () => {
         </div>
 
         <div className="flex flex-col text-white">
+          <p className="text-sm mb-5">You cannot update this again</p>
           <p>If you already done you can skip this</p>
           <div className="flex gap-3 mt-5">
             <button
@@ -129,9 +135,33 @@ const DeveloperInfo = () => {
               Skip
             </button>
             <button
-              className="bg-white text-black p-2 rounded"
+              className="bg-white text-black p-2 rounded flex items-center"
               onClick={CreateuserProfile}
             >
+            {loading ? (
+              <svg
+                class="animate-spin -ml-1 mr-3 h-5 w-5 text-black"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                ></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+            ) : (
+              ""
+            )}
               Create User Profile
             </button>
           </div>
