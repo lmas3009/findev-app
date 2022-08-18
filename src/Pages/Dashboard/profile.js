@@ -11,6 +11,8 @@ const Profile = () => {
   const [userData, setUserData] = useState({});
   const [location, setLocation] = useState({});
   const [skills, setSkills] = useState([]);
+  const [active_update, setActiveUpdate] = useState(false);
+  const [updatedSkill, setUpdatedSkill] = useState("");
 
   const response = () => {
     history.push("/");
@@ -23,7 +25,6 @@ const Profile = () => {
     GetSkills();
   });
 
-  
   const GetSkills = () => {
     instance
       .post("/get-skills", {
@@ -47,7 +48,6 @@ const Profile = () => {
         }
       });
   };
-
 
   const GetInfo = () => {
     instance
@@ -108,8 +108,11 @@ const Profile = () => {
               );
             })}
           </div>
-          <div className="w-full flex items-end justify-end cursor-pointer">
-            <p className="text-sm">Update Skills</p>
+
+          <div className="w-full flex justify-end items-end text-sm mb-2">
+            <a href={"/auth/"+id+"/developerinfo"}>
+              <p>Update Profile</p>
+            </a>
           </div>
         </div>
 

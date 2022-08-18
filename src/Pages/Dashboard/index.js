@@ -1,16 +1,28 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import DeveloperCard from "../../components/DeveloperCards";
 import Poppins from "../../fonts/poppins";
+import instance from "../../utils/axios";
 import CountryList from "./countrylist";
 import Header from "./header";
 import Search from "./search";
 
 const Dashboard = () => {
   const [searchdata, setSearchdata] = useState("");
+  const [developers, setDevelopers] = useState([]);
 
   const SearchData = (data) => {
     setSearchdata(data);
   };
+
+  useEffect(() => {
+    getDevelopers();
+  })
+
+  const getDevelopers = async () => {
+    instance.get("/get-developers").then(res=>{
+      setDevelopers(res.data.result)
+    })
+  }
 
   return (
     <div className="bg-[#181B23] min-h-[100vh]">
@@ -22,15 +34,10 @@ const Dashboard = () => {
       <p className="text-white">{searchdata}</p>
       <CountryList />
       <div className="flex items-start justify-center gap-3 flex-wrap pb-10">
-        <DeveloperCard />
-        <DeveloperCard />
-        <DeveloperCard />
-        <DeveloperCard />
-        <DeveloperCard />
-        <DeveloperCard />
-        <DeveloperCard />
-        <DeveloperCard />
-        <DeveloperCard />
+        {developers.map((developer, index) => {
+          return (
+            <DeveloperCard data={developer} />
+          )})}
       </div>
     </div>
   );
