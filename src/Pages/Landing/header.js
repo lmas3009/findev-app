@@ -7,7 +7,7 @@ const Header = () => {
         <p className="logo">fIndev-app</p>
       </div>
       <div className="flex gap-3 items-center">
-        <a href="https://github.com/lmas3009/findev"  rel="noreferrer" target="_blank" ><p>Github</p></a>
+        <a href="https://github.com/lmas3009/findev-app"  rel="noreferrer" target="_blank" ><p>Github</p></a>
         <a href="/auth">
           <div className="text-white bg-black p-1 pl-2 pr-2 rounded-md flex items-center justify-center">
             <p>Get Started</p>
