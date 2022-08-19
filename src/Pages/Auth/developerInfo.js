@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { useParams } from "react-router-dom";
 import { default as ReactSelect } from "react-select";
 import { components } from "react-select";
@@ -123,7 +123,7 @@ const DeveloperInfo = () => {
 
         <div className="flex flex-col text-white">
           <p className="text-sm mb-5">You cannot update this again</p>
-          <p>If you already done you can skip this</p>
+          <p>Skip only if you have completed this part already.</p>
           <div className="flex gap-3 mt-5">
             <button
               className="bg-white text-black p-2 rounded"

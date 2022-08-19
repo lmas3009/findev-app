@@ -21,12 +21,12 @@ const Header = () => {
     };
 
     GetInfo();
-  }, []);
+  }, [id]);
 
   return (
     <div className="h-16 w-full flex items-center justify-between pl-5 pr-5 bg-white">
       <a href={"/home/"+id}>
-        <p className="logo">fIndev</p>
+        <p className="logo">fIndev-app</p>
       </a>
       <div className="flex gap-3 items-center">
         <a href={"/home/" + id + "/userprofile"}>

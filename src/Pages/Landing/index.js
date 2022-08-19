@@ -2,7 +2,6 @@ import Poppins from "../../fonts/poppins";
 import Header from "./header";
 import BG from "../../assets/bg1.png";
 import BG_back from "../../assets/bg_side_1.png";
-import Testimonials from "./testimonials";
 import JoinInvite from "./joininvite";
 
 const LandindPage = () => {
@@ -33,11 +32,9 @@ const LandindPage = () => {
           </div>
         </div>
 
-        <Testimonials/>
-
         <JoinInvite/>
 
-        <p className="w-full flex items-center justify-center text-white pt-10 pb-2">&copy;findev 2022</p>
+        <p className="w-full flex items-center justify-center text-white pt-10 pb-2">&copy;findev-app 2022</p>
       </div>
     </div>
   );
