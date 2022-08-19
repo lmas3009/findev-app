@@ -1,0 +1,23 @@
+{
+    "app_name": "findev-app",  //Name of the app
+    "description": "A place to connect/find developers", // One line description
+    "hidden": "", // Can be "true" or "false". If true, this app won't show up in Launchpad.
+    "rank": "", // This is used to sort the apps in the launchpad. 1 to 20 are reserved. Enter greater than 20
+    "type": "", //Can be "Building Block" or "Full App"
+    "contributed_by": "", // Can be "Redis Labs" or "Community" or "Partner"
+    "repo_url": "https://github.com/lmas3009/findev-app", //This is the Gitub Repo's URL.
+    "download_url": "https://github.com/lmas3009/findev-app/archive/refs/heads/master.zip",//This is a direct link to the Github's download button so people can download it directly from the Marketplace
+    "hosted_url": "https://findev-app.vercel.app/", //The URL of the app. if you are hosting this app somewhere
+    "quick_deploy": "true", //"true" if the project has Heroku, Vercel, Google deploy buttons
+    "deploy_buttons": [],//Deploy buttons for "heroku", "vercel" or "Google" in the form of objects.
+    "language": [ReactJs, Redis, NodeJs, ExpressJs], // Backend technologies: "JavaScript", "Java", "Python", "Go", "C#", "Ruby", "PHP", etc. 
+    "redis_commands": [], // Enter all the Redis commands
+    "redis_features": ["caching"],// Enter any core Redis feature or leave it blank.
+    "redis_modules": [], //Value can be one or more of "RediJSON", "", "RedisTimeseries", "RedisAI"  "RedisGears" or "RedisGraph" listed in an array. 
+    "app_image_urls": [
+    ], // Provide any image urls in an array.
+    "youtube_url": "https://youtu.be/QKZ2wWE68e8", //Provide a Youtube link to your app's video
+    "special_tags": [], // "Hackathon", "Paid", or any event names.
+    "verticals": [], // Can be: "Healthcare", "Financial", "Tourism", "Retail", "Oil & Gas", "Manufacturing", "Technology","Education", "Construction"  
+    "markdown": "" // Link to the RAW Markdown.
+}
